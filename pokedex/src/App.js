@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
 
@@ -17,6 +17,7 @@ const App = () => {
       setPokemonType(res.data.types[0].type.name);
       setPokemonData(toArray);
       console.log(res);
+      // console.log(res.data.abilities[0].ability.name);
     } catch (e) {
       console.log(e);
     }
@@ -39,9 +40,9 @@ const App = () => {
         </label>
         </form> 
         {pokemonData.map((data) => {
-          return(
+          return(<>
             <div className="container">
-              <img src={data.sprites["front_default"]} alt={data.name}/>
+            <img src={data.sprites.other.["official-artwork"].["front_default"]} alt={data.name}/>
               <div className="divTable">
                 <div className="divTableBody">
                 <div className="divTableRow">
@@ -60,12 +61,29 @@ const App = () => {
                   <div className="divTableCell">Number of Battles</div>
                   <div className="divTableCell">{data.game_indices.length}</div>
                 </div>
+                <div className="divTableRow">
+                  <div className="divTableCell">Abilities</div>
+                  <div className="divTableCell">{data.abilities[0].ability.name}</div>
+                </div>
+                
+                {/* TODO - create a list of abilities and display them all in one cell - joined with a , */}
+            
+
+
+                <div className="divTableRow">
+                  <div className="divTableCell">Abilities</div>
+                  <div className="divTableCell">{data.abilities[1].ability.name}</div>
+                </div>
+                <div className="divTableRow">
+                  <div className="divTableCell">Abilities</div>
+                  <div className="divTableCell">{data.abilities[2].ability.name}   </div>
+                </div>
               </div>
             </div>
             </div>
-          )
+            </>  )
         })}
-
+        
     </div>
   );
 }
