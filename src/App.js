@@ -18,8 +18,8 @@ const App = () => {
       toArray.push(res.data);
       setPokemonType(res.data.types[0].type.name);
       setPokemonData(toArray);
-      const abilities = (res.data.abilities);
-      abilities.forEach(logAbility);
+      // const abilities = (res.data.abilities);
+      // abilities.forEach(logAbility);
       const id = (res.data.id);
       console.log(id);
       
@@ -29,19 +29,19 @@ const App = () => {
     } catch (e) {
       console.log(e);
     }
-    function logAbility(ability, index, orginalArray) {
-      const nextAbility = orginalArray[index + 1];
-      const prevAbility = orginalArray[index - 1];
-      // prevAbility ? console.log(prevAbility):
-      // nextAbility ? console.log(nextAbility): 
-      // console.log(ability, index, array)
-      // console.log(ability);
-      // console log next ability of there is one
-      console.log(orginalArray.[index].ability.name)
-      // if (nextAbility) {console.log(nextAbility);}
-      // console.log(orginalArray.[index + 1]);
-      console.log('---------*---------')
-    }
+    // function logAbility(ability, index, orginalArray) {
+    //   const nextAbility = orginalArray[index + 1];
+    //   const prevAbility = orginalArray[index - 1];
+    //   prevAbility ? console.log(prevAbility):
+    //   nextAbility ? console.log(nextAbility): 
+    //   console.log(ability, index, array)
+    //   console.log(ability);
+    //   console log next ability of there is one
+    //   console.log(orginalArray.[index].ability.name)
+    //   if (nextAbility) {console.log(nextAbility);}
+    //   console.log(orginalArray.[index + 1]);
+    //   console.log('---------*---------')
+    // }
   };
   
   
