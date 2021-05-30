@@ -65,7 +65,7 @@ const App = () => {
         </form> 
         {pokemonData.map((data) => {
           return(<>
-            <div style={{ backgroundImage: `url("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png")`  }} className="container">
+            <div style={{ backgroundImage: `url("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png")`, backgroundSize: 'contain' }} className="container">
             <img src={data.sprites.other.["official-artwork"].["front_default"]} alt={data.name}/>
               <div className="divTable">
                 <div className="divTableBody">
