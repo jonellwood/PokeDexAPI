@@ -1,31 +1,5 @@
-
-
-
 .App {
   text-align: center;
-  
-}
-.root {
-  display: flex;
-  height: 100%;
-}
-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: auto;
-  padding: 20px 20px 12px;
-  /* background-color: white; */
-  color: gray;
-}
-article {
-  display: flex;
-  flex-direction: column;
-}
-
-.capitalize {
-  text-transform: capitalize;
 }
 
 .divTable{
@@ -74,11 +48,11 @@ article {
   justify-content: center;
 }
 
-/* img{
-  display: none;
+img{
+  /* display: none; */
   height: 16em;
   border: 3px solid red;
-} */
+}
 
 input {
   box-sizing: border-box;
