@@ -1,61 +1,47 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './App.css';
+import SectionsItemList from './SectionsItemList';
 
-const GetAbilites = () => {
-    const [pokemon, setPokemon] = useState("eevee");
-    const [pokemonData, setPokemonData] = useState([]);
-    const [pokemonType, setPokemonType] = useState("");
+const Abilites = () => {
+    // const [pokemon, setPokemon] = useState("eevee");
+    // const [pokemonData, setPokemonData] = useState([]);
+    const [pokemonAbility, setPokemonAbility] = useState([]);
 
-    const getPokemon = async () => {
-    const toArray = [];
+    const GetAbilites = async () => {
+    const abilityArray = [];
 
     try {
-        const  url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`
-        const res = await axios.get(url);
+        const  aUrl = `https://pokeapi.co/api/v2/ability/`
+        const aRes = await axios.get(aUrl);
         // set useState to the data
-        toArray.push(res.data);
-        setPokemonType(res.data.types[0].type.name);
-        setPokemonData(toArray);
+        abilityArray.push(aRes.data);
+
+        setPokemonAbility(abilityArray);
+        console.log(aRes)
 
     } catch (e) {
         console.log(e);
     }
-    };
+  };
+const onLoad = (e) => {
+  GetAbilites()
+}
+return (
 
-    const handleChange = (e) => {
-        setPokemon(e.target.value.toLowerCase());
-    }
-    
-    const handleSubmit = (e) => {
-    e.preventDefault();
-    getPokemon();
-    }
-
-    return (
-        <div className="App">
-            <form onSubmit={handleSubmit}>
-                <label>
-                    <input type="text" onChange={handleChange} placeholder="Enter Pokemon Name" />
-                </label>
-            </form>
-            {pokemonData.map((data) => {
-                return( 
-                    <> 
-                        <div>{data.abilties} </div>
-                    
-                    
-                    </>
-                )
-            })}
+  <div className="App">
+    {pokemonAbility.map((data) => {
+    return(
+      <div classname="divTable">
+        <div className="divTabeRow">
+          <div className="divTableCell bold"></div>
+          <div className="divTableCell"></div>
+        </div>
         </div>
     )
+  })}
+  </div>
+);
+}
 
-
-
-
-
-
-};
-
-
-export default GetAbilites; 
+export default Abilites;
