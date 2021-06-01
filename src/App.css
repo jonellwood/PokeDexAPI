@@ -4,7 +4,7 @@
 
 .divTable{
   display: table;
-  max-width: 20em;
+  max-width: 80%;
   float: right;
   display: flex;
   align-items: center;
@@ -50,8 +50,8 @@
 
 img{
   /* display: none; */
-  height: 16em;
-  border: 3px solid red;
+  height: 12em;
+  /* border: 3px solid red; */
 }
 
 input {
@@ -65,4 +65,11 @@ input {
 body{
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png");
   background-size: cover;
+}
+#capitalize{
+  color:hotpink;
+}
+
+.bold{
+  font-weight: bolder;
 }
