@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from 'axios';
 import './App.css';
 import SectionsItemList from './SectionsItemList';
-import './Nav.js';
-import "./Abilities";
-import Abilites from './Abilities';
+// import Nav from './components/Nav';
+// import Home from './components/Home';
+// import Abilites from './components/Abilities';
+// import GetAbilities from './components/Abilities';
+
 
 
 const App = () => {
@@ -56,25 +58,30 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     getPokemon();
+
   }
+
+  // const onClick = (e) => {
+  //   // e.preventDefault();
+  //   GetAbilities()
+  // }
   // backgroundImage: url(""https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{data.id}}.png"")
 
   return (
     <div className="App">
-      {/* <Router>
-        <Switch>
-          <Route path="/" exact component={() => <App />} />
-          <Route path="/abilities" exact component={() => <Abilites />} />
-        </Switch>
-      </Router> */}
+      {/* <Router> */}
+        {/* <Nav /> */}
+        {/* <Switch> */}
+          {/* <Route path="/" exact component={() => <Home />} /> */}
+          {/* <Route path="/abilities" exact component={() => <Abilites />} /> */}
+        {/* </Switch> */}
+      {/* </Router> */}
       <form onSubmit={handleSubmit}>
         <label>
           <input type="text" onChange={handleChange} placeholder="Enter Pokemon Name" />
         </label>
         </form>
-        <a href="/abilities">
-        <button type="button">Abilities List</button>
-        </a>
+
         {pokemonData.map((data) => {
           return(<>
             <div style={{ backgroundImage: `url("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png")`, backgroundSize: 'contain' }} className="container">
@@ -112,7 +119,6 @@ const App = () => {
                     <div className="divTableCell bold">All pokemon moves count </div>
                     <div className="divTableCell">{data.count}</div>
                   </div>
-
                 )
               })}
 

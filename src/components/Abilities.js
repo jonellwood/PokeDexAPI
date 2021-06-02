@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './App.css';
-import SectionsItemList from './SectionsItemList';
+import '../App.css';
+// import SectionsItemList from '../SectionsItemList';
 
 const Abilites = () => {
     // const [pokemon, setPokemon] = useState("eevee");
@@ -24,24 +24,25 @@ const Abilites = () => {
         console.log(e);
     }
   };
-const onLoad = (e) => {
-  GetAbilites()
-}
-return (
-
-  <div className="App">
-    {pokemonAbility.map((data) => {
-    return(
-      <div classname="divTable">
-        <div className="divTabeRow">
-          <div className="divTableCell bold"></div>
-          <div className="divTableCell"></div>
-        </div>
-        </div>
-    )
-  })}
-  </div>
-);
+  // const onClick = (e) => {
+  //   e.preventDefault();
+  //   GetAbilites()
+  // }
+  return (
+    <div className="App">
+      {pokemonAbility.map((data) => {
+      return(
+        <div classname="divTable">
+          <button type="button" onClick={GetAbilites}>Load</button>
+          <div className="divTabeRow">
+            <div className="divTableCell bold">Maybe I am just dumb</div>
+            <div className="divTableCell"></div>
+          </div>
+          </div>
+      )
+    })}
+    </div>
+  );
 }
 
 export default Abilites;
