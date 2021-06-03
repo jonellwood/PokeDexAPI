@@ -1,36 +1,38 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-function Nav(props) {
+const handleChange = (e) => {
+  // setPokemon(e.target.value.toLowerCase());
+  console.log('handling change');
+}
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  // getPokemon();
+  console.log('handling submit');
+}
+
+function Navigation() {
   return (
-    <div className="navigation">
-      <nav class="navbar">
-        <div class="container">
-          <Link class="navbar-brand" to="/">
-            PokeDex Site
-          </Link>
-
-          <div>
-            <ul class="navbar-nav">
-              <li class={`nav-item ${props.location.pathname === "/" ? "active" : ""}`}>
-                <Link class="nav-link" to="/">
-                  Home
-                  <span class="sr-only">(current)</span>
-                </Link>
-              </li>
-              <li class={`nav-item ${props.location.pathname === "/abilities" ? "active" : ""}`}>
-                <Link class="nav-link" to="/abilities">
-                  Abilities
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
+    <div>
+      <nav>
+        <NavLink to="/" title="Home">
+          <p>Home</p>
+        </NavLink>
+        <NavLink to="/pokemon?page=1">
+          <p>All Pokemon</p>
+        </NavLink>
+        <NavLink to="types">
+          <p>Types</p>
+        </NavLink>
+          <form onSubmit={handleSubmit} className='searchForm'>
+          <label>
+            <input type="text" onChange={handleChange} placeholder="Enter Pokemon Name" />
+          </label>
+          </form>
       </nav>
     </div>
   );
-
 }
 
-export default withRouter(Nav);
-
+export default Navigation;

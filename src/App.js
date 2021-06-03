@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Redirect, Switch } from "react-router-dom";
 import axios from 'axios';
 import './App.css';
 import SectionsItemList from './SectionsItemList';
-// import Nav from './components/Nav';
-// import Home from './components/Home';
-// import Abilites from './components/Abilities';
-// import GetAbilities from './components/Abilities';
+import SectionItem from './SectionItem';
+import Navigation from './components/Nav';
+import Home from './components/Home';
+import Abilites from './components/Abilities';
+import GetAbilities from './components/Abilities';
+import Pokemons from './views/Pokemons';
 
 
 
@@ -51,15 +53,15 @@ const App = () => {
 
 
 
-  const handleChange = (e) => {
-    setPokemon(e.target.value.toLowerCase());
-  }
+//  const handleChange = (e) => {
+//     setPokemon(e.target.value.toLowerCase());
+//   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    getPokemon();
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     getPokemon();
 
-  }
+//   }
 
   // const onClick = (e) => {
   //   // e.preventDefault();
@@ -69,18 +71,19 @@ const App = () => {
 
   return (
     <div className="App">
-      {/* <Router> */}
-        {/* <Nav /> */}
-        {/* <Switch> */}
-          {/* <Route path="/" exact component={() => <Home />} /> */}
-          {/* <Route path="/abilities" exact component={() => <Abilites />} /> */}
-        {/* </Switch> */}
-      {/* </Router> */}
-      <form onSubmit={handleSubmit}>
+      <HashRouter>
+        <Navigation />
+          <Route path="/">
+            <Redirect to="/pokemon?page=1" />
+          </Route>
+          <Route path="/pokemon" component={Pokemons} />
+
+      </HashRouter>
+      {/* <form onSubmit={handleSubmit}>
         <label>
           <input type="text" onChange={handleChange} placeholder="Enter Pokemon Name" />
         </label>
-        </form>
+        </form> */}
 
         {pokemonData.map((data) => {
           return(<>
@@ -113,13 +116,22 @@ const App = () => {
                   <div className="divTableCell"><SectionsItemList title="Stats" propName="stat" data={data.stats} /></div>
                 </div>
 
-              {pokemonAbility.map((data) => {
-                return(
+              {pokemonAbility.map((title, propName, data) => {
+                return(<>
                   <div className="divTableRow">
                     <div className="divTableCell bold">All pokemon moves count </div>
                     <div className="divTableCell">{data.count}</div>
                   </div>
-                )
+                  {/* <div className="divTableRow">
+                    <div className="divTableCell bold">One pokemon move</div>
+                    <div className="divTableCell">title </div>
+                       {data.map((item, index, arr) => (
+                         <span key={item[propName].name}>
+                           {`${item[propName].name}${(arr.length - 1) === index ? '' : ', '}`}
+                         </span>
+                    ))}</div> */}
+                  </>
+                  )
               })}
 
                 {/* <div className="divTableRow">

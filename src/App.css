@@ -73,3 +73,31 @@ body{
 .bold{
   font-weight: bolder;
 }
+
+nav{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  background-color: #99aaab50;
+}
+nav a{
+  text-decoration: none;
+  color: blue;
+  font-size: 2rem;
+}
+.capitalize{
+  text-transform: capitalize;
+}
+.linkedItems{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  font-weight: 700;
+  text-decoration: none;
+  color: blue;
+}
+.linkedItems .subtitle {
+  display: none;
+}
+.linkedItems a{
+  text-decoration: none;
+  color: inherit;
+}

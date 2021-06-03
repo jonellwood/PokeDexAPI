@@ -3,7 +3,7 @@ import React from 'react';
 function SectionsItemList({title, propName, data }) {
   return (
     <section>
-      <span className="title"></span>
+      <span className="title">{`${title}: `}</span>
       {
         data.map((item, index, arr) => (
           <span className="capitalize" key={item[propName].name}>
