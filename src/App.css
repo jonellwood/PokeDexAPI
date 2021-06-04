@@ -92,7 +92,8 @@ nav a{
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   font-weight: 700;
   text-decoration: none;
-  color: blue;
+  color: black;
+  background-color: #85858590;
 }
 .linkedItems .subtitle {
   display: none;

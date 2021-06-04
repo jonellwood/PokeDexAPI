@@ -1,4 +1,4 @@
-import { createSelector } from 'reslect';
+import { createSelector } from 'reselect';
 
 const getPokemonType = (state, props) => state.getPokemonType[props.match.params.id];
 

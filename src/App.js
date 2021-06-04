@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { HashRouter, Route, Redirect, Switch } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 import axios from 'axios';
 import './App.css';
 import SectionsItemList from './SectionsItemList';
-import SectionItem from './SectionItem';
 import Navigation from './components/Nav';
-import Home from './components/Home';
-import Abilites from './components/Abilities';
-import GetAbilities from './components/Abilities';
 import Pokemons from './views/Pokemons';
-
+import Pokemon from './views/Pokemon';
+import PokemonType from './views/PokemonType';
+import PokemonTypes from './views/PokemonTypes';
 
 
 const App = () => {
@@ -22,7 +20,7 @@ const App = () => {
     const toArray = [];
     const abilityArray = [];
 
-
+    
     try {
       const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`
       const res = await axios.get(url);
@@ -57,11 +55,10 @@ const App = () => {
 //     setPokemon(e.target.value.toLowerCase());
 //   }
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     getPokemon();
-
-//   }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   getPokemon();
+  // }
 
   // const onClick = (e) => {
   //   // e.preventDefault();
@@ -73,10 +70,11 @@ const App = () => {
     <div className="App">
       <HashRouter>
         <Navigation />
-          <Route path="/">
-            <Redirect to="/pokemon?page=1" />
-          </Route>
+          <Route path="/" />
           <Route path="/pokemon" component={Pokemons} />
+          <Route path="/types" component={PokemonTypes} />
+          <Route path="/pokemon/:id" compoment={Pokemon} />
+          <Route path="/type/:id" component={PokemonType} />
 
       </HashRouter>
       {/* <form onSubmit={handleSubmit}>

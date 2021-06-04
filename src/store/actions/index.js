@@ -4,7 +4,6 @@ import {
     ADD_POKEMON,
     ADD_POKEMON_TYPES,
     ADD_POKEMON_TYPE,
-    ADD_FAVOURITES
   } from '../constants/action-types';
 
 import { getNumberOfPages } from '../../helpers/functions';
@@ -41,5 +40,38 @@ export const fetchPokemon = (id) => (dispatch, getState) => {
     }).catch((err) => err);
   }
 
+  return Promise.resolve();
+};
+
+
+export const fetchPokemonTypes = () => async (dispatch, getState) => {
+  // if to skip if aleady fetched
+  if (!getState().pokemonTypes.length) {
+    try {
+      const { data } = await axios.get('type/?limit=50');
+      dispatch({
+        type: ADD_POKEMON_TYPES,
+        pokemonTypes: data.results
+      });
+    } catch (err) {
+      return err;
+    }
+  }
+  return Promise.resolve();
+};
+
+export const fetchPokemonType = (id) => async (dispatch, getState) => {
+  // if skip blah blah blach
+  if (!getState().pokemonType[id]) {
+    try {
+      const { data } = await axios.get(`type/${id}`);
+      dispatch({
+        type: ADD_POKEMON_TYPE,
+        pokemonType: data
+      });
+    } catch (err) {
+      return err;
+    }
+  }
   return Promise.resolve();
 };

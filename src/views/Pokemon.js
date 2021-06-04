@@ -41,4 +41,4 @@ const mapStateToProps = (state, props) => ({
   pokemon: state.pokemon[props.match.params.id] || {}
 });
 
-export default connect(mapStateToProps, { fetchPokemon, getFavourites })(Pokemon);
+export default connect(mapStateToProps, { fetchPokemon })(Pokemon);

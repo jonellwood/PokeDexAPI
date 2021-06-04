@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { stripIdFromUrl } from '../helpers/functions';
 
+
 function LinkItem({ item, route }) {
   const id = stripIdFromUrl(item);
   const routeTo = `/${route || 'pokemon'}/${id}`;

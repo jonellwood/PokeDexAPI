@@ -22,14 +22,12 @@ function Navigation() {
         <NavLink to="/pokemon?page=1">
           <p>All Pokemon</p>
         </NavLink>
-        <NavLink to="types">
+        <NavLink to="/types">
           <p>Types</p>
         </NavLink>
-          <form onSubmit={handleSubmit} className='searchForm'>
-          <label>
-            <input type="text" onChange={handleChange} placeholder="Enter Pokemon Name" />
-          </label>
-          </form>
+        <NavLink to="/search">
+          <p>Search</p>
+        </NavLink>
       </nav>
     </div>
   );
