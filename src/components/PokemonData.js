@@ -4,25 +4,25 @@ import SectionItemList from './SectionItemList';
 
 function PokemonData({ pokemon }) {
     return (
-        <article>
+        <article className="PokemonDisplay">
             <section className="heading">
                 <span className="capitalize">{pokemon.name}</span>
             </section>
             <section>
-                <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+                <img src={pokemon.sprites.other.["official-artwork"].["front_default"]} alt={pokemon.name} />
             </section>
-            <SectionItem title="ID" data={pokemon.id} />
-            <SectionItem title="Base Experience" data={pokemon.base_experience} />
-            <SectionItemList title="Type" propName="type" data={pokemon.types} />
+            <SectionItem className="statSection" title="ID" data={pokemon.id} />
+            <SectionItem className="statSection" title="Base Experience" data={pokemon.base_experience} />
+            <SectionItemList className="statSection" title="Type" propName="type" data={pokemon.types} />
             {
                 pokemon.stats.map((data) => (
                     <SectionItem title={data.stat.name} data={data.base_stat} key={data.stat.name} />
                 ))
             }
-            <SectionItemList title="Abilities" propName="ability" data={pokemon.abilities} />
-            <SectionItemList title="Moves" propName="move" data={pokemon.moves} />
-            <SectionItem title="Weight" data={pokemon.weight} />
-            <SectionItem title="Height" data={pokemon.height} />
+            <SectionItemList className="statSection" title="Abilities" propName="ability" data={pokemon.abilities} />
+            <SectionItemList className="statSection" title="Moves" propName="move" data={pokemon.moves} />
+            <SectionItem className="statSection" title="Weight" data={pokemon.weight} />
+            <SectionItem className="statSection" title="Height" data={pokemon.height} />
         </article>
     );
 }

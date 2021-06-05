@@ -1,6 +1,10 @@
 import { createSelector } from 'reselect';
 
-const getPokemonType = (state, props) => state.getPokemonType[props.match.params.id];
+const getPokemonType = (state, props) => state.pokemonType[props.match.params.id];
+
+export const isFavourite = (state, props) => (
+  state.favourites.some((pokemon) => pokemon.id === props.pokemon.id)
+);
 
 export const getPokemonsByType = createSelector(
   [getPokemonType],

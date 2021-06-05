@@ -2,7 +2,7 @@ import React from 'react';
 
 function SectionItemList({ title, propName, data }) {
     return (
-        <section>
+        <section className="statSection">
             <span className="title">{`${title}: `}</span>
             {
                 data.map((item, index, arr) => (

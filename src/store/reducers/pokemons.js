@@ -6,7 +6,7 @@ const pokemons = (state = {}, action) => {
       return {
         ...state,
         [action.page]: action.pokemons,
-        numberOPages: action.numberOPages
+        numberOfPages: action.numberOfPages
       };
     }
     default:

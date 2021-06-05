@@ -1,17 +1,21 @@
 import axios from 'axios';
 import {
-    ADD_POKEMONS,
-    ADD_POKEMON,
-    ADD_POKEMON_TYPES,
-    ADD_POKEMON_TYPE,
-  } from '../constants/action-types';
+  ADD_POKEMONS,
+  ADD_POKEMON,
+  ADD_POKEMON_TYPES,
+  ADD_POKEMON_TYPE,
+  ADD_FAVOURITES
+} from '../constants/action-types';
+import {
+  getNumberOfPages,
+  getFavouritesFromLocalStorage,
+  saveFavouritesToLocalStorage
+} from '../../helpers/functions';
 
-import { getNumberOfPages } from '../../helpers/functions';
-
-axios.defaults.baseURL = 'https://pokeapi.co/api/v2';
+axios.defaults.baseURL = 'https://pokeapi.co/api/v2/';
 
 export const fetchPokemons = (page) => (dispatch, getState) => {
-  // skip if already fetched
+  // If data is already fetched then skip
   if (!getState().pokemons[page]) {
     const offset = (page - 1) * 20;
     return axios.get(`pokemon/?offset=${offset}`).then(({ data }) => {
@@ -30,7 +34,7 @@ export const fetchPokemons = (page) => (dispatch, getState) => {
 };
 
 export const fetchPokemon = (id) => (dispatch, getState) => {
-  // skip if data is alread fetched
+  // If data is already fetched then skip
   if (!getState().pokemon[id]) {
     return axios.get(`pokemon/${id}`).then(({ data }) => {
       dispatch({
@@ -43,35 +47,63 @@ export const fetchPokemon = (id) => (dispatch, getState) => {
   return Promise.resolve();
 };
 
-
-export const fetchPokemonTypes = () => async (dispatch, getState) => {
-  // if to skip if aleady fetched
+export const fetchPokemonTypes = () => (dispatch, getState) => {
+  // If data is already fetched then skip
   if (!getState().pokemonTypes.length) {
-    try {
-      const { data } = await axios.get('type/?limit=50');
+    return axios.get('type/?limit=50').then(({ data }) => {
       dispatch({
         type: ADD_POKEMON_TYPES,
         pokemonTypes: data.results
       });
-    } catch (err) {
-      return err;
-    }
+    }).catch((err) => err);
   }
+
   return Promise.resolve();
 };
 
-export const fetchPokemonType = (id) => async (dispatch, getState) => {
-  // if skip blah blah blach
+export const fetchPokemonType = (id) => (dispatch, getState) => {
+  // If data is already fetched then skip
   if (!getState().pokemonType[id]) {
-    try {
-      const { data } = await axios.get(`type/${id}`);
+    return axios.get(`type/${id}`).then(({ data }) => {
       dispatch({
         type: ADD_POKEMON_TYPE,
         pokemonType: data
       });
-    } catch (err) {
-      return err;
-    }
+    }).catch((err) => err);
   }
+
   return Promise.resolve();
+};
+
+export const getFavourites = () => (dispatch, getState) => {
+  // If data is already fetched then skip
+  if (!getState().favourites.length) {
+    const favourites = getFavouritesFromLocalStorage();
+
+    dispatch({
+      type: ADD_FAVOURITES,
+      favourites
+    });
+  }
+};
+
+export const addFavourite = (pokemon) => (dispatch, getState) => {
+  const favourites = [...getState().favourites, pokemon];
+  favourites.sort((a, b) => a.id - b.id);
+  saveFavouritesToLocalStorage(favourites);
+
+  dispatch({
+    type: ADD_FAVOURITES,
+    favourites
+  });
+};
+
+export const removeFavourite = (id) => (dispatch, getState) => {
+  const favourites = getState().favourites.filter((pokemon) => pokemon.id !== id);
+  saveFavouritesToLocalStorage(favourites);
+
+  dispatch({
+    type: ADD_FAVOURITES,
+    favourites
+  });
 };

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PokemonData from '../components/PokemonData';
 import Loader from '../components/Loader';
 import ErrorHandler from '../components/ErrorHandler';
-import { fetchPokemon } from '../store/actions/index';
+import { fetchPokemon, getFavourites } from '../store/actions/index';
 
 class Pokemon extends React.Component {
   constructor() {
@@ -41,4 +41,4 @@ const mapStateToProps = (state, props) => ({
   pokemon: state.pokemon[props.match.params.id] || {}
 });
 
-export default connect(mapStateToProps, { fetchPokemon })(Pokemon);
+export default connect(mapStateToProps, { fetchPokemon, getFavourites })(Pokemon);

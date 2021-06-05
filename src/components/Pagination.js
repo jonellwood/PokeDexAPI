@@ -1,17 +1,18 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+
 function Pagination({ page, numberOfPages }) {
   return (
     <footer>
       <div>
         <NavLink to={`/pokemons?page=${page - 1}`}>
-          <button type='button' disabled={page === 1}>
+          <button type="button" disabled={page === 1}>
             Prev
           </button>
         </NavLink>
         <NavLink to={`/pokemons?page=${page + 1}`}>
-          <button type='button' disabled={page === numberOfPages}>
+          <button type="button" disabled={page === numberOfPages}>
             Next
           </button>
         </NavLink>
@@ -21,9 +22,12 @@ function Pagination({ page, numberOfPages }) {
           {`Page ${page}`}
         </span>
         {
-          numberOfPages && (<span>
-            {`/${numberOfPages}`}
-          </span>)
+          numberOfPages
+          && (
+            <span>
+              {`/${numberOfPages}`}
+            </span>
+          )
         }
       </p>
     </footer>
