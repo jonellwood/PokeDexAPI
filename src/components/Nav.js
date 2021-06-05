@@ -14,9 +14,9 @@ function Navigation() {
         <NavLink to="/types">
           <p>Types</p>
         </NavLink>
-        <NavLink to="/search">
+        {/* <NavLink to="/search">
           <p>Search</p>
-        </NavLink>
+        </NavLink> */}
       </nav>
     </div>
   );

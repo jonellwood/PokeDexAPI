@@ -99,6 +99,7 @@ nav a{
   text-decoration: none;
   color: black;
   background-color: #85858590;
+  padding-left: 10px;
 }
 .linkedItems .subtitle {
   display: none;
@@ -128,4 +129,21 @@ nav a{
   border:#0000ff50 1px solid;
   background-color: #80808050;
   padding: 5px;
+}
+.footer{
+  text-align: center;
+  font-size: larger;
+  color:black;
+  font-weight: 600;
+}
+.footer button{
+  color: royalblue;
+  font-size: large;
+  font-weight: 600;
+  padding: 5px;
+  margin: 10px;
+}
+.footer span{
+  color: white;
+  background-color: #85858550;
 }

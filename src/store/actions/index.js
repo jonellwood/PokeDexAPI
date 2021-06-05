@@ -47,6 +47,20 @@ export const fetchPokemon = (id) => (dispatch, getState) => {
   return Promise.resolve();
 };
 
+export const fetchPokemonByName = (name) => (dispatch, getState) => {
+  // If data is already fetched then skip
+  if (!getState().pokemon[name]) {
+    return axios.get(`pokemon/${name}`).then(({ data }) => {
+      dispatch({
+        type: ADD_POKEMON,
+        pokemon: data
+      });
+    }).catch((err) => err);
+  }
+
+  return Promise.resolve();
+};
+
 export const fetchPokemonTypes = () => (dispatch, getState) => {
   // If data is already fetched then skip
   if (!getState().pokemonTypes.length) {

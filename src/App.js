@@ -7,6 +7,7 @@ import Favourites from './views/Favourites';
 import Pokemon from './views/Pokemon';
 import PokemonType from './views/PokemonType';
 import './App.css';
+// import SearchPage from './views/Search';
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/favourites" component={Favourites} />
       <Route path="/pokemon/:id" component={Pokemon} />
       <Route path="/type/:id" component={PokemonType} />
+      {/* <Route path="/search" component={SearchPage} /> */}
     </HashRouter>
     );
 }

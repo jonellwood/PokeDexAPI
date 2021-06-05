@@ -1,31 +1,29 @@
 import React from 'react';
+import FetchPokemon from '../helpers/getPokemon';
 
+function SearchPokemon(props) {
 
+    const [search, setSearch ] = React.useState('');
 
+    // const handleChange = (e) => {
+    //     setSearch(e.target.value)
+    // }
+    
+    const handleSubmit = (e) => {
+        setSearch(e.target.value);
+        console.log(search);
+        return FetchPokemon(search);
+    }
+    return (
+        <form onSubmit={handleSubmit} className="searchForm">
+            <label>
+                <input type="text" onChange={(e) => setSearch(e.target.value)} placeholder="Enter a Pokemon Name" />
+            </label>
+            {/* <button onClick={handleSubmit}>
+                Search
+            </button> */}
+        </form>
+    );
+}
 
-
-
-
-const handleChange = (e) => {
-    // setPokemon(e.target.value.toLowerCase());
-    console.log('handling change');
-  }
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // getPokemon();
-    console.log('handling submit');
-  }
-
-
-  function searchPokemon() {
-      return (
-          <form onSubmit={handleSubmit} className="searchForm">
-              <label>
-                  <input type="text" onChange={handleChange} placeholder="Enter a Pokemon Name" />
-              </label>
-          </form>
-      )
-  }
-
-export default searchPokemon;
+export default SearchPokemon;

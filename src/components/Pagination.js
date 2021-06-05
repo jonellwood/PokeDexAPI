@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 function Pagination({ page, numberOfPages }) {
   return (
-    <footer>
+    <footer className="footer">
       <div>
         <NavLink to={`/pokemons?page=${page - 1}`}>
           <button type="button" disabled={page === 1}>
